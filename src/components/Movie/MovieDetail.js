@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dropdown, Header, Icon, Label, Segment, Rating } from 'semantic-ui-react';
+import { Grid, Button, Dropdown, Header, Icon, Label, Segment, Rating } from 'semantic-ui-react';
 
 const options = [
   { key: 'uno', text: 'uno', value: 'uno' },
@@ -41,8 +41,13 @@ class MovieDetail extends Component {
 
         <Segment>
             <Header as='h3'>Add to Collection</Header>
-            <Dropdown placeholder='Collections' fluid multiple selection options={options} />
-          </Segment>
+            <Grid.Column>
+              <Dropdown placeholder='Collections' fluid multiple selection options={options} /> <br/>
+            </Grid.Column>
+            <Grid.Column>
+              <Button>Save to Collection</Button>
+            </Grid.Column>
+        </Segment>
   
       </Segment.Group>
     );
