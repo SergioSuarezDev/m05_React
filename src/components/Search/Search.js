@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Loader, Segment } from 'semantic-ui-react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import PropTypes from 'prop-types';
 import axios from 'axios/index';
 import config from '../../config/config';
 import List from '../List/List';
@@ -19,8 +18,6 @@ class Search extends Component {
     };
     this.getResults = this.getResults.bind(this);
     this.getMoreResults = this.getMoreResults.bind(this);
-    this.sortByTitle = this.sortByTitle.bind(this);
-    this.sortByPopularity = this.sortByPopularity.bind(this);
   }
 
   componentDidMount(){
@@ -91,7 +88,7 @@ class Search extends Component {
           hasMore={true}
           loader={<Loader />}
         >
-        <Container fluid>
+        <Container>
           <Segment basic loading={this.state.isLoading}>
             <List results={this.state.results}/>
           </Segment>
@@ -100,14 +97,5 @@ class Search extends Component {
       )
   }
 }
-
-Search.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      query: PropTypes.string
-    })
-  })
-};
-
 
 export default Search;

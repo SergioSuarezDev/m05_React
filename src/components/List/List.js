@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import ListItem from './ListItem';
 
@@ -13,11 +12,5 @@ class List extends Component {
     );
   }
 }
-
-List.propTypes = {
-  results: PropTypes.arrayOf(
-    PropTypes.object
-  )
-};
 
 export default List;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Container, Grid, Segment } from 'semantic-ui-react';
 import config from '../../config/config';
@@ -53,8 +52,8 @@ class Movie extends Component {
   render() {
     return (
       <Container>
-        <Segment basic loading={this.state.isLoading}>
-          <Grid columns='equal' padded>
+        <Segment basic compact loading={this.state.isLoading}>
+          <Grid columns='equal' centered>
             <Grid.Row>
               <Grid.Column mobile={16} tablet={10} computer={10} largeScreen={3} widescreen={3}>
                 <MovieImg poster_path={this.state.details.poster_path}/>
@@ -69,13 +68,5 @@ class Movie extends Component {
     );
   }
 }
-
-Movie.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string
-    })
-  })
-};
 
 export default Movie;

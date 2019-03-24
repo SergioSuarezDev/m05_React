@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Input, Image, Menu } from 'semantic-ui-react';
+import { Image, Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SearchBar from '../Search/SearchBar';
+import SearchB from '../Search/SearchB';
 import config from '../../config/config';
 
 const Header = () => (
@@ -11,10 +11,10 @@ const Header = () => (
       <Menu.Item><FontAwesomeIcon icon="film"/>&nbsp;<Link to={'/app'}>Movies</Link></Menu.Item>
       <Menu.Item><FontAwesomeIcon icon="folder"/>&nbsp;<Link to={'#'}>Collections</Link></Menu.Item>
       <Menu.Menu position='right'>
-            <Menu.Item>
-            <SearchBar/>
-            </Menu.Item>
-          </Menu.Menu>
+        <Menu.Item>
+          <SearchB/>
+        </Menu.Item>
+      </Menu.Menu>
     </Menu>
 );
 

@@ -65,10 +65,8 @@ class Home extends Component {
   render() {
       return (
         <InfiniteScroll
-          pageStart={0}
-          next={this.getMoreDiscoverMovies}
-          hasMore={true}
-          loader={<Loader />}
+          pageStart={0} next={this.getMoreDiscoverMovies}
+          hasMore={true} loader={<Loader />}
           endMessage={
             <p style={{textAlign: 'center'}}>
               <b>All Loaded</b>

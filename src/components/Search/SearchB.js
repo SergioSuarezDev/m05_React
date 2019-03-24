@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Grid, Image, Search } from 'semantic-ui-react';
 import axios from 'axios';
@@ -15,15 +14,7 @@ const resultRenderer = ({ image, title, description, movie }) => <Link to={'/mov
   </Link>
 ;
 
-resultRenderer.propTypes = {
-  movie: PropTypes.string,
-  image: PropTypes.string,
-  price: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string
-};
-
-class SearchBar extends Component {
+class SearchB extends Component {
   constructor(props) {
     super(props);
 
@@ -96,14 +87,11 @@ class SearchBar extends Component {
     const { isLoading, value, results } = this.state;
 
     return (
-      <Grid container columns={'equal'}>
-        <Grid.Column width={2} only={'tablet computer'}>
-        </Grid.Column>
+      <Grid container columns={'equal'} >
         <Grid.Column>
           <form onKeyPress={this.handleSubmit}>
             <Search
-              fluid
-              input={{
+              fluid input={{
                 fluid: true
               }}
               loading={isLoading}
@@ -123,8 +111,5 @@ class SearchBar extends Component {
   }
 }
 
-SearchBar.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
-export default SearchBar;
+export default SearchB;

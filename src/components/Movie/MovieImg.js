@@ -1,5 +1,4 @@
 import React, { Component  } from 'react';
-import PropTypes from 'prop-types';
 import { Image } from 'semantic-ui-react';
 import config  from '../../config/config';
 
@@ -13,9 +12,5 @@ class MovieImage extends Component  {
     );
   }
 }
-
-MovieImage.propTypes = {
-  poster_path: PropTypes.string
-};
 
 export default MovieImage;
