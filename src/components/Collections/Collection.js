@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { List, Button, Card, Image, Container, Grid, Segment } from 'semantic-ui-react';
+import { List, Button, Card } from 'semantic-ui-react';
 
-class Collections extends Component {
+class Collection extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -14,18 +14,19 @@ class Collections extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
     <Card>
       <Card.Content>
-      <Card.Header>{this.props.colInfo.uno}</Card.Header>
+      <Card.Header>{this.props.colInfo.Coleccion}</Card.Header>
         <br/>
         <Card.Meta>Films added:</Card.Meta>        
         <Card.Description>
           <List>
-            <List.Item>Peli1</List.Item>
-            <List.Item>Peli2</List.Item>
-            <List.Item>Peli3</List.Item>
+            {
+                Object.entries(this.props.colInfo.Pelis).map(([key, value]) => (
+                    <List.Item key={this.props.colInfo.Pelis[key].Codigo} >{this.props.colInfo.Pelis[key].Titulo}</List.Item>
+                ))
+            }             
           </List>
         </Card.Description>
       </Card.Content>
@@ -41,4 +42,4 @@ class Collections extends Component {
   }
 }
 
-export default Collections;
+export default Collection;

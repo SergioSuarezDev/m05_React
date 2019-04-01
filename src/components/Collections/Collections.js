@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Button, Card, Image, Container, Grid, Segment } from 'semantic-ui-react';
+import {Card, Container, Segment } from 'semantic-ui-react';
 import Collection from "./Collection";
 
 class Collections extends Component {
@@ -12,7 +12,43 @@ class Collections extends Component {
       details: {}
     };
 
-    this.getDetails//= this.getDetails.bind(this);
+    //this.getDetails//= this.getDetails.bind(this);
+
+     this.colecciones = {
+      "Peliculas": [{
+          "Coleccion": "PruebaCol001",
+          "Pelis": [{
+              "Codigo": "05592",
+              "Titulo": "Titulo 001"
+            },
+            {
+              "Codigo": "05292",
+              "Titulo": "Titulo 002"
+            },
+            {
+              "Codigo": "03592",
+              "Titulo": "Titulo 003"
+            }
+          ]
+        },
+        {
+          "Coleccion": "PruebaCol002",
+          "Pelis": [{
+              "Codigo": "05592",
+              "Titulo": "Titulo 001"
+            },
+            {
+              "Codigo": "05292",
+              "Titulo": "Titulo 002"
+            },
+            {
+              "Codigo": "03592",
+              "Titulo": "Titulo 003"
+            }
+          ]
+        }
+      ]
+    }
   }
 
   componentWillMount(){
@@ -38,50 +74,20 @@ class Collections extends Component {
     });
   }
 
+
+  
   render() {
-    const colecciones = {
-      "Peliculas": [{
-          "Collecion": "PruebaCol9049",
-          "Pelis": [{
-              "Codigo": "05592",
-              "Titulo": "Titulo 001"
-            },
-            {
-              "Codigo": "05292",
-              "Titulo": "Titulo 002"
-            },
-            {
-              "Codigo": "03592",
-              "Titulo": "Titulo 003"
-            }
-          ]
-        },
-        {
-          "Collecion": "PruebaCol9049",
-          "Pelis": [{
-              "Codigo": "05592",
-              "Titulo": "Titulo 001"
-            },
-            {
-              "Codigo": "05292",
-              "Titulo": "Titulo 002"
-            },
-            {
-              "Codigo": "03592",
-              "Titulo": "Titulo 003"
-            }
-          ]
-        }
-      ]
-    }
 
     return (
       <Container>
         <Segment basic compact loading={this.state.isLoading}>
-        <Card.Group>      
-
-        <Collection colInfo={colecciones}/>
-        
+          <Card.Group>   
+            {
+              Object.entries(this.colecciones.Peliculas).map(([key, value]) => (
+                  <Collection key={this.colecciones.Peliculas[key].Coleccion} 
+                  colInfo={this.colecciones.Peliculas[key]}/>               
+              ))
+            }                        
           </Card.Group>
         </Segment>
       </Container>
