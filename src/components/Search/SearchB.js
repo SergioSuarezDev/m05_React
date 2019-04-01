@@ -11,8 +11,7 @@ const resultRenderer = ({ image, title, description, movie }) => <Link to={'/mov
       {title && <div className='title'>{title}</div>}
       {description && <div className='description'>{description}</div>}
     </div>
-  </Link>
-;
+  </Link>;
 
 class SearchB extends Component {
   constructor(props) {

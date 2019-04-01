@@ -24,7 +24,7 @@ class MovieDetail extends Component {
 
         <Segment>
           <Header as='h3'>My Rating</Header>
-          <Rating icon='star' defaultRating={Math.round(this.props.details.vote_average)} maxRating={10} />       
+          <Rating onClick={this.rateFilm} icon='star' defaultRating={0} maxRating={10} />       
         </Segment>
           
         <Segment>
@@ -52,6 +52,14 @@ class MovieDetail extends Component {
       </Segment.Group>
     );
   }
+
+  rateFilm = () => {
+    console.log(Rating)
+    //localStorage.setItem('ratings', JSON.stringify(sampleRatings));
+    //this.setState({ toggle : !this.state.toggle })
+  }
+
+
 }
 
 export default MovieDetail;
