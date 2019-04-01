@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Loader, Segment } from 'semantic-ui-react';
-import config from '../../config/config';
 
 
-import {sampleMovies} from './sampleMovies';
-import {sampleRatings} from './sampleRatings';
-
-sessionStorage.setItem('discoverResults', JSON.stringify([]));
-sessionStorage.setItem('discoverPage', 1);
-sessionStorage.setItem('searchQuery', '');
-sessionStorage.setItem('searchResults', JSON.stringify([]));
-sessionStorage.setItem('searchPage', 1);
-localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Colección de prueba', movies : sampleMovies}]));
-localStorage.setItem('ratings', JSON.stringify(sampleRatings));
+localStorage.setItem('discoverResults', JSON.stringify([]));
+localStorage.setItem('searchResults', JSON.stringify([]));
+localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Prueba', movies : colPrueba}]));
+localStorage.setItem('ratings', JSON.stringify(RatingsPrueba));
 
 class Storage extends Component {
     constructor(props, context) {
@@ -36,76 +28,18 @@ class Storage extends Component {
     }
   
     componentWillReceiveProps(nextProps) {
-      /*if(this.props.match.params.query !== nextProps.match.params.query) {
-        this.setState({
-          query: nextProps.match.params.query,
-          isLoading: true,
-          results: null,
-          page: 0,
-          total_pages: 1,
-          sort: 1
-        }, () => this.getResults());
-      }*/
+
     }
+
   
-    getResults() {
-      axios.get(config.api.apiUrl.search, {
-        params: {
-          query: this.state.query,
-          api_key: config.api.apiKey,
-          language: config.api.language
-        }
-      })
-        .then( response => {
-          this.setState({
-            results: response.data.results,
-            isLoading: false,
-            page: response.data.page,
-            total_results: response.data.total_results,
-            total_pages: response.data.total_pages
-          });
-        });
-    }
-  
-    getMoreResults() {
-      if (this.state.page < this.state.total_pages) {
-        axios.get(config.api.apiUrl.search, {
-          params: {
-            query: this.props.match.params.query,
-            api_key: config.api.apiKey,
-            language: config.api.language,
-            page: this.state.page + 1
-          }
-        })
-          .then( response => {
-            let results = this.state.results.concat(response.data.results);
-            this.setState({
-              results: results,
-              page: response.data.page,
-              total_results: response.data.total_results,
-              total_pages: response.data.total_pages
-            });
-          });
-      }
-    }
+   
   
     render() {
         return (
-          <InfiniteScroll
-            pageStart={0}
-            next={this.getMoreResults}
-            hasMore={true}
-            loader={<Loader />}
-          >
-          <Container>
-            <Segment basic loading={this.state.isLoading}>
-              <List results={this.state.results}/>
-            </Segment>
-          </Container>
-          </InfiniteScroll>
+          <br/>
         )
     }
   }
   
-  export default Search;
+  export default Storage;
   
