@@ -9,16 +9,12 @@ const options = [
   { key: 'dos', text: 'dos', value: 'dos' },
 ]
 
-
-
 class MovieDetail extends Component {
   constructor(props, context) {
     super(props, context);
 
-    
     this.state = {
       rating: 1,
-      ratings: [] 
     };
 
   }
@@ -35,7 +31,7 @@ class MovieDetail extends Component {
  
   ratings.map((rate) => {
       if(this.props.details.id === rate.id) {
-        rating =  rate.value
+        rating = rate.value
       }
    })
 
@@ -95,12 +91,14 @@ class MovieDetail extends Component {
     if(ratingsSaved.length > 0) {
 
       ratingsSaved.map((rate, i) => {
+
+        //TODO: Aqui aun teng un lio de 2 pares de 00
         let actualRating = ratingsSaved.filter((rate) =>  { 
           console.warn(rate)
-          return rate.id == this.props.details.id }
+          return rate.id === this.props.details.id }
         );
 
-        if(actualRating.length != 0) {
+        if(actualRating.length !== 0) {
           rate.value = nextValue
         } else { 
           ratingsSaved.push({id : this.props.details.id, value : nextValue })
