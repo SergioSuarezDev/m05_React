@@ -1,13 +1,44 @@
 import React, { Component } from 'react';
-import { Grid, Button, Dropdown, Header, Icon, Label, Segment, Rating } from 'semantic-ui-react';
+import { Grid, Button, Dropdown, Header, Icon, Label, Segment } from 'semantic-ui-react';
+import StarRatingComponent from 'react-star-rating-component';
+import Storage  from '../Storage/Storage'
+
 
 const options = [
   { key: 'uno', text: 'uno', value: 'uno' },
   { key: 'dos', text: 'dos', value: 'dos' },
 ]
 
+
+
 class MovieDetail extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    
+    this.state = {
+      rating: 1,
+      ratings: [] 
+    };
+
+  }
+
+  componentDidMount(){
+   
+  }
+
+  
   render() {
+
+  let rating;
+  const ratings = Storage.loadRatings()
+ 
+  ratings.map((rate) => {
+      if(this.props.details.id === rate.id) {
+        rating =  rate.value
+      }
+   })
+
     return (
       <Segment.Group>
         <Segment>
@@ -24,7 +55,11 @@ class MovieDetail extends Component {
 
         <Segment>
           <Header as='h3'>My Rating</Header>
-          <Rating onClick={this.rateFilm} icon='star' defaultRating={0} maxRating={10} />       
+          <StarRatingComponent 
+            name="rateFilm" 
+            starCount={10} value={rating}
+            onStarClick={this.onStarClick.bind(this)}
+          />       
         </Segment>
           
         <Segment>
@@ -53,10 +88,30 @@ class MovieDetail extends Component {
     );
   }
 
-  rateFilm = () => {
-    console.log(Rating)
-    //localStorage.setItem('ratings', JSON.stringify(sampleRatings));
-    //this.setState({ toggle : !this.state.toggle })
+  onStarClick(nextValue, prevValue, name) {
+    //console.log(this.state, nextValue, prevValue, name, this.props.details.id)
+    let ratingsSaved = Storage.loadRatings()
+
+    if(ratingsSaved.length > 0) {
+
+      ratingsSaved.map((rate, i) => {
+        let actualRating = ratingsSaved.filter((rate) =>  { 
+          console.warn(rate)
+          return rate.id == this.props.details.id }
+        );
+
+        if(actualRating.length != 0) {
+          rate.value = nextValue
+        } else { 
+          ratingsSaved.push({id : this.props.details.id, value : nextValue })
+        }
+      });
+      
+    } 
+
+    this.setState({rating: nextValue});
+    Storage.setRatings(ratingsSaved)
+
   }
 
 
