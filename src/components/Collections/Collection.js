@@ -32,7 +32,7 @@ class Collection extends Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='red'>
+          <Button onClick={this.removeColl.bind(this.props.colInfo.Coleccion)} basic color='red'>
             Remove
           </Button>
         </div>
@@ -40,6 +40,11 @@ class Collection extends Component {
     </Card>
     );
   }
+
+removeColl(coll){
+  console.log(coll)
+}
+
 }
 
 export default Collection;

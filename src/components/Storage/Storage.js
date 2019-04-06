@@ -51,6 +51,22 @@ localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Prueba', mo
                 "Titulo": "Titulo 003"
               }
             ]
+          },
+          {
+            "Coleccion": "PruebaCol002",
+            "Pelis": [{
+                "Codigo": "05592",
+                "Titulo": "Titulo 001"
+              },
+              {
+                "Codigo": "05292",
+                "Titulo": "Titulo 002"
+              },
+              {
+                "Codigo": "03592",
+                "Titulo": "Titulo 003"
+              }
+            ]
           }
         ]
       }
