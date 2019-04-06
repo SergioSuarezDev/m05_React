@@ -85,14 +85,14 @@ class MovieDetail extends Component {
   }
 
   onStarClick(nextValue, prevValue, name) {
-    //console.log(this.state, nextValue, prevValue, name, this.props.details.id)
+    console.log(this.state, nextValue, prevValue, name, this.props.details.id)
+
     let ratingsSaved = Storage.loadRatings()
 
     if(ratingsSaved.length > 0) {
 
       ratingsSaved.map((rate, i) => {
 
-        //TODO: Aqui aun teng un lio de 2 pares de 00
         let actualRating = ratingsSaved.filter((rate) =>  { 
           console.warn(rate)
           return rate.id === this.props.details.id }
@@ -100,6 +100,7 @@ class MovieDetail extends Component {
 
         if(actualRating.length !== 0) {
           rate.value = nextValue
+          this.setState({rating: nextValue});
         } else { 
           ratingsSaved.push({id : this.props.details.id, value : nextValue })
         }
@@ -107,7 +108,6 @@ class MovieDetail extends Component {
       
     } 
 
-    this.setState({rating: nextValue});
     Storage.setRatings(ratingsSaved)
 
   }

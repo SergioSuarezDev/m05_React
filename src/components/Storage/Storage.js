@@ -18,8 +18,8 @@ localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Prueba', mo
     }
 
     function loadRatings(){
-     let ratings;
-
+      let ratings;
+      
      const getItems = () => {
         return JSON.parse(localStorage.getItem('ratings')) 
       }
