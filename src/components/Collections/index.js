@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Container, Segment, Button } from 'semantic-ui-react';
 import Collection from "./Collection";
-import Storage from '../Storage/Storage'
+import Storage from '../Storage'
 
 class Collections extends Component {
   constructor(props, context) {

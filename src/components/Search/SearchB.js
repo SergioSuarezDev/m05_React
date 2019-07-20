@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Image, Search } from 'semantic-ui-react';
 import axios from 'axios';
 import debounce from 'lodash/debounce'
-import config from '../../config/config';
+import config from '../../config';
 
 const resultRenderer = ({ image, title, description, movie }) => <Link to={'/movie/' + movie}>
   {image && <div key='image' className='image'><Image src={image} rounded/></div>}

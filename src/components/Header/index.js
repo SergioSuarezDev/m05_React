@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchB from '../Search/SearchB';
-import config from '../../config/config';
+import config from '../../config';
 
 const Header = () => (
     <Menu borderless color={'black'} inverted >

@@ -1,6 +1,6 @@
 import React, { Component  } from 'react';
 import { Image } from 'semantic-ui-react';
-import config  from '../../config/config';
+import config  from '../../config';
 
 class MovieImage extends Component  {
   render() {

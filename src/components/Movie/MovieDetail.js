@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Button, Dropdown, Header, Icon, Label, Segment } from 'semantic-ui-react';
 import StarRatingComponent from 'react-star-rating-component';
-import Storage  from '../Storage/Storage'
+import Storage  from '../Storage'
 
 
 const options = [

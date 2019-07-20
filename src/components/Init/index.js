@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Loader, Segment } from 'semantic-ui-react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios/index';
-import config from '../../config/config';
-import List from '../List/List';
+import config from '../../config';
+import List from '../List';
 
 class Home extends Component {
   constructor(props, context) {

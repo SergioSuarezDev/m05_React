@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import Header from '../Header/Header';
-import Init from '../Init/Init';
-import Search from '../Search/Search';
-import Movie from '../Movie/Movie';
-import Collections from '../Collections/Collections';
+import Header from '../Header';
+import Init from '../Init';
+import Search from '../Search';
+import Movie from '../Movie';
+import Collections from '../Collections';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faFilm, faFolder } from '@fortawesome/free-solid-svg-icons';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Grid, Segment } from 'semantic-ui-react';
-import config from '../../config/config';
+import config from '../../config';
 import MovieDetail from "./MovieDetail";
 import MovieImg from "./MovieImg";
 
