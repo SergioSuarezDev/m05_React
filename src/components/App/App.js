@@ -18,9 +18,9 @@ class App extends Component {
           <Header/>
           <Switch>
             <Route exact path="/" component={Init}/>
-            <Route path="/searchURL/:query" component={Search}/>
-            <Route path="/movie/:id" component={Movie}/>
-            <Route path="/collections/" component={Collections}/>
+            <Route exact path="/searchURL/:query" component={Search}/>
+            <Route exact path="/movie/:id" component={Movie}/>
+            <Route exact path="/collections/" component={Collections}/>
             <Redirect from='*' to='/' />
           </Switch>
         </div>
