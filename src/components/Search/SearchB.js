@@ -46,7 +46,6 @@ class SearchB extends Component {
 
   handleSubmit(e) {
     if (e.key === 'Enter') {
-      this.context.router.history.push('/search/' + this.state.query);
       e.preventDefault();
     }
   }
@@ -86,19 +85,19 @@ class SearchB extends Component {
     const { isLoading, value, results } = this.state;
 
     return (
-      <Grid container columns={'equal'} >
+      <Grid container columns={'3'} >
         <Grid.Column>
           <form onKeyPress={this.handleSubmit}>
             <Search
               fluid input={{
-                fluid: true
+                fluid: false
               }}
               loading={isLoading}
               onResultSelect={this.handleResultSelect}
               onSearchChange={this.handleSearchChange}
               resultRenderer={resultRenderer}
               results={results}
-              showNoResults={true}
+              showNoResults={false}
               value={value}
               size={'mini'}
               {...this.props}
