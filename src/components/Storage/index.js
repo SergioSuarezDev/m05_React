@@ -1,11 +1,4 @@
 
-
-/*localStorage.setItem('discoverResults', JSON.stringify([]));
-localStorage.setItem('searchResults', JSON.stringify([]));
-localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Prueba', movies : colPrueba}]));
-*/
-  
-
     function initRatings(){
       localStorage.setItem('ratings', JSON.stringify(
         [{id:1, value:1}, {id:2, value:1}]
@@ -84,7 +77,6 @@ localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Prueba', mo
       return JSON.parse(localStorage.getItem('collections')) 
     }
 
-    
     collections = getItems()
     if (collections == null) {
       initCollections()
@@ -93,12 +85,30 @@ localStorage.setItem('collections', JSON.stringify([{id : 0, name : 'Prueba', mo
     return collections
  }
 
+ function removeItemColl(item) {
+   let colls = loadCollections();
+
+   let pelis = colls.Peliculas;
+   console.log('pelis:', pelis);
+   console.log('item:', item);
+
+ let nuevasPelis = pelis.filter(function( pelis ) {
+  return pelis.Coleccion !== item;
+});
+
+console.log('nuevaspelis: ', nuevasPelis)
+
+  setCollections({Peliculas: nuevasPelis});
+
+ }
+
   export default Storage = {
     initRatings,
     setRatings,
     loadRatings,
     initCollections,
     setCollections,
-    loadCollections
+    loadCollections,
+    removeItemColl
   } ;
   

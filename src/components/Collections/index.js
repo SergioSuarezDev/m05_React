@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {Card, Container, Segment, Button } from 'semantic-ui-react';
+import {Card, Container, Segment, Input } from 'semantic-ui-react';
 import Collection from "./Collection";
 import Storage from '../Storage'
+
+
 
 class Collections extends Component {
   constructor(props, context) {
@@ -9,12 +11,12 @@ class Collections extends Component {
 
     this.state = {
       isLoading: false,
+      valueForm: '',
       collections: {}
     };
   }
 
   componentWillMount(){
-    Storage.initCollections()
     this.setState({
       collections : Storage.loadCollections()
     }) 
@@ -22,10 +24,10 @@ class Collections extends Component {
 
   
   render() {
-
     return (
       <Container>
-        <button onClick={this.addNewColl} className="ui button">Add New Coll</button>
+        <Input ref="NewColl" onChange={this.onInputChange}  placeholder='Name.....' />
+        <button onClick={this.addNewColl.bind(this)} className="ui button">Add New Coll</button>
         <Segment basic compact loading={this.state.isLoading}>
           <Card.Group>   
             {
@@ -40,8 +42,14 @@ class Collections extends Component {
     );
   }
 
+  onInputChange = (e) => {
+    this.state.valueForm = e.target.value;
+}
+  
 addNewColl(){
-  console.log("ADD NEW")
+  this.state.collections.Peliculas.push({Coleccion: this.state.valueForm, Pelis:[]})
+  Storage.setCollections(this.state.collections);
+  this.setState({ collections : this.state.collections}) 
 }
 
 }

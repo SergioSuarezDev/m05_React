@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List, Button, Card } from 'semantic-ui-react';
+import Storage from '../Storage'
 
 class Collection extends Component {
   constructor(props, context) {
@@ -9,8 +10,6 @@ class Collection extends Component {
       isLoading: false,
       colInfo: {}
     };
-
-
   }
 
   render() {
@@ -32,7 +31,8 @@ class Collection extends Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button onClick={this.removeColl.bind(this.props.colInfo.Coleccion)} basic color='red'>
+          <Button onClick={() => this.removeColl(this.props.colInfo.Coleccion)}
+           basic color='red'>
             Remove
           </Button>
         </div>
@@ -42,7 +42,7 @@ class Collection extends Component {
   }
 
 removeColl(coll){
-  console.log(coll)
+  Storage.removeItemColl(coll)
 }
 
 }

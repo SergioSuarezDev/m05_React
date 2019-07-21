@@ -7,8 +7,10 @@ import Movie from '../Movie';
 import Collections from '../Collections';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faFilm, faFolder } from '@fortawesome/free-solid-svg-icons';
+import Storage from '../Storage'
 
 library.add(faFilm, faFolder);
+Storage.loadCollections()
 
 class App extends Component {
   render() {

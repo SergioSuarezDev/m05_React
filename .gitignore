@@ -1,3 +1,6 @@
+# fichero config
+config/index.js
+
 # test
 test/ts/*.js
 

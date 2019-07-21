@@ -3,11 +3,19 @@ import { Grid, Button, Dropdown, Header, Icon, Label, Segment } from 'semantic-u
 import StarRatingComponent from 'react-star-rating-component';
 import Storage  from '../Storage'
 
+const collections = Storage.loadCollections();
 
-const options = [
-  { key: 'uno', text: 'uno', value: 'uno' },
-  { key: 'dos', text: 'dos', value: 'dos' },
-]
+const options = [];
+
+Object.entries(collections.Peliculas).map(([key, value]) => (
+  options.push( {
+    key: collections.Peliculas[key].Coleccion, 
+    text: collections.Peliculas[key].Coleccion, 
+    value: collections.Peliculas[key].Coleccion 
+  }
+
+)))
+
 
 class MovieDetail extends Component {
   constructor(props, context) {
@@ -73,7 +81,7 @@ class MovieDetail extends Component {
         <Segment>
             <Header as='h3'>Add to Collection</Header>
             <Grid.Column>
-              <Dropdown placeholder='Collections' fluid multiple selection options={options} /> <br/>
+              <Dropdown onChange={this.handleChange} placeholder='Collections' fluid multiple selection options={options} /> <br/>
             </Grid.Column>
             <Grid.Column>
               <Button>Save to Collection</Button>
@@ -111,6 +119,11 @@ class MovieDetail extends Component {
     Storage.setRatings(ratingsSaved)
 
   }
+
+  handleChange = (e, { value }) =>  {
+    console.log(value);
+  }
+
 
 
 }
