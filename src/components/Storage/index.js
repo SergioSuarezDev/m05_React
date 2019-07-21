@@ -1,5 +1,5 @@
 
-    function initRatings(){
+  function initRatings(){
       localStorage.setItem('ratings', JSON.stringify(
         [{id:1, value:1}, {id:2, value:1}]
         )
@@ -115,24 +115,6 @@
       }
     }
   }
-
-  /* for (var i in pelis) { 
-      for (var i in colls) {    
-        //console.log('colls',colls[i]);
-        console.log('peli', pelis[i].Coleccion)
-        console.log('coll' ,colls[i])
-
-        if (pelis[i].Coleccion === colls[i]) {
-          console.log('COINDIDE')
-          pelis[i].Pelis.push(film);
-        }
-      }
-} */
-
-
-
-console.log(pelis)
-
 
 setCollections({Peliculas: pelis});
 
