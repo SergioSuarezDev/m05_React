@@ -99,16 +99,15 @@ class MovieDetail extends Component {
   }
 
   onStarClick(nextValue, prevValue, name) {
-    console.log(this.state, nextValue, prevValue, name, this.props.details.id)
+
 
     let ratingsSaved = Storage.loadRatings()
 
     if(ratingsSaved.length > 0) {
-
       ratingsSaved.map((rate, i) => {
-
+        console.log(rate)
         let actualRating = ratingsSaved.filter((rate) =>  { 
-          console.warn(rate)
+              
           return rate.id === this.props.details.id }
         );
 

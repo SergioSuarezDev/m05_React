@@ -42,10 +42,10 @@ class Collection extends Component {
     );
   }
 
-removeColl(coll){
-  Storage.removeItemColl(coll)
-}
-
+  removeColl(coll){
+    Storage.removeItemColl(coll);
+    window.location.reload();
+  }
 }
 
 export default Collection;
