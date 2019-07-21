@@ -3,18 +3,6 @@ import { Grid, Button, Dropdown, Header, Icon, Label, Segment } from 'semantic-u
 import StarRatingComponent from 'react-star-rating-component';
 import Storage  from '../Storage'
 
-const collections = Storage.loadCollections();
-
-const options = [];
-
-Object.entries(collections.Peliculas).map(([key, value]) => (
-  options.push( {
-    key: collections.Peliculas[key].Coleccion, 
-    text: collections.Peliculas[key].Coleccion, 
-    value: collections.Peliculas[key].Coleccion 
-  }
-
-)))
 
 
 class MovieDetail extends Component {
@@ -23,12 +11,28 @@ class MovieDetail extends Component {
 
     this.state = {
       rating: 1,
+      options: [],
+      selectedOptions: []
     };
 
   }
 
   componentDidMount(){
-   
+
+    const options = [];
+    const collections = Storage.loadCollections();
+
+    Object.entries(collections.Peliculas).map(([key, value]) => (
+      options.push( {
+        key: collections.Peliculas[key].Coleccion, 
+        text: collections.Peliculas[key].Coleccion, 
+        value: collections.Peliculas[key].Coleccion 
+      })))
+
+      this.setState({
+        options : options
+      }) 
+
   }
 
   
@@ -81,13 +85,15 @@ class MovieDetail extends Component {
         <Segment>
             <Header as='h3'>Add to Collection</Header>
             <Grid.Column>
-              <Dropdown onChange={this.handleChange} placeholder='Collections' fluid multiple selection options={options} /> <br/>
+              <Dropdown onChange={this.handleChange.bind(this)} placeholder='Collections' 
+              fluid multiple selection options={this.state.options} /> <br/>
             </Grid.Column>
             <Grid.Column>
-              <Button>Save to Collection</Button>
+              <Button onClick={() => this.addFilmToColls(this.props.details.id, 
+              this.props.details.original_title)}>
+              Save to Collection</Button>
             </Grid.Column>
         </Segment>
-  
       </Segment.Group>
     );
   }
@@ -120,11 +126,16 @@ class MovieDetail extends Component {
 
   }
 
-  handleChange = (e, { value }) =>  {
-    console.log(value);
+  handleChange(event, data) {
+    this.setState({
+      selectedOptions : data.value
+    }) 
   }
 
 
+  addFilmToColls(id, titulo){
+    Storage.addFilmtoCollections(id, titulo, this.state.selectedOptions)
+  }
 
 }
 

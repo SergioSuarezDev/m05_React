@@ -16,6 +16,7 @@ class Collections extends Component {
     };
   }
 
+  
   componentWillMount(){
     this.setState({
       collections : Storage.loadCollections()
@@ -32,7 +33,8 @@ class Collections extends Component {
           <Card.Group>   
             {
               Object.entries(this.state.collections.Peliculas).map(([key, value]) => (
-                  <Collection key={this.state.collections.Peliculas[key].Coleccion} 
+                  <Collection 
+                  key={this.state.collections.Peliculas[key].Coleccion} 
                   colInfo={this.state.collections.Peliculas[key]}/>               
               ))
             }                        
@@ -53,5 +55,9 @@ addNewColl(){
 }
 
 }
+
+
+
+
 
 export default Collections;

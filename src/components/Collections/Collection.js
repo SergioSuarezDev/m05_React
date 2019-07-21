@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List, Button, Card } from 'semantic-ui-react';
 import Storage from '../Storage'
 
+
 class Collection extends Component {
   constructor(props, context) {
     super(props, context);

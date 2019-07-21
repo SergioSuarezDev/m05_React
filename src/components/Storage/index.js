@@ -96,11 +96,48 @@
   return pelis.Coleccion !== item;
 });
 
-console.log('nuevaspelis: ', nuevasPelis)
-
   setCollections({Peliculas: nuevasPelis});
-
  }
+
+
+ function addFilmtoCollections(film, title, colls) {
+  let collection = loadCollections();
+  let pelis = collection.Peliculas;
+  console.log(collection);
+
+  console.log(film, colls)
+
+
+  for (var i in colls) { 
+    for (var i in pelis) { 
+      if (pelis[i].Coleccion === colls[i]) {
+        pelis[i].Pelis.push({'codigo': film, 'Titulo': title});
+      }
+    }
+  }
+
+  /* for (var i in pelis) { 
+      for (var i in colls) {    
+        //console.log('colls',colls[i]);
+        console.log('peli', pelis[i].Coleccion)
+        console.log('coll' ,colls[i])
+
+        if (pelis[i].Coleccion === colls[i]) {
+          console.log('COINDIDE')
+          pelis[i].Pelis.push(film);
+        }
+      }
+} */
+
+
+
+console.log(pelis)
+
+
+setCollections({Peliculas: pelis});
+
+
+};
 
   export default Storage = {
     initRatings,
@@ -109,6 +146,7 @@ console.log('nuevaspelis: ', nuevasPelis)
     initCollections,
     setCollections,
     loadCollections,
-    removeItemColl
+    removeItemColl,
+    addFilmtoCollections
   } ;
   
